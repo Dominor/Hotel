@@ -5,19 +5,19 @@ public class Hotel {
     private String name;
     private Room[] rooms;
 
-    Hotel(String name, int numberOfRooms) {
+    public Hotel(String name, int numberOfRooms) {
 
         this.name = name;
         this.rooms = new Room[numberOfRooms];
-
-        for (int i = 0; i < rooms.length; i++) {
-            rooms[i] = new Room();
-        }
     }
 
     private int checkForFreeRooms () {
 
         for (int i = 0; i < rooms.length; i++) {
+
+            if (rooms[i] == null) {
+                rooms[i] = new Room(); // this technique is called lazy instantiation
+            }
             if (rooms[i].isFree()) {
                 System.out.println("Hotel: " + this + " Room " + (i + 1) + " free.");
                 return i;
@@ -40,7 +40,9 @@ public class Hotel {
 
     public void checkOut(int room) {
 
-        rooms[room - 1].changeAvailability();
+        if (rooms[room - 1] != null) {
+            rooms[room - 1].changeAvailability();
+        }
     }
 
 
