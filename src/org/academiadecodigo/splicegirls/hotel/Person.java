@@ -46,6 +46,4 @@ public class Person {
         }
         return name + " is staying at " + hotel + " in room nr " + roomNr;
     }
-
-    public Hotel getHotel() { return hotel; }
 }

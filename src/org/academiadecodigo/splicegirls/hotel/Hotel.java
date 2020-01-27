@@ -18,6 +18,7 @@ public class Hotel {
             if (rooms[i] == null) {
                 rooms[i] = new Room(); // this technique is called lazy instantiation
             }
+
             if (rooms[i].isFree()) {
                 System.out.println("Hotel: " + this + " Room " + (i + 1) + " free.");
                 return i;
@@ -34,6 +35,7 @@ public class Hotel {
         if (freeRoom == -1) {
             return 0;
         }
+
         rooms[freeRoom].changeAvailability();
         return (freeRoom + 1);
     }
